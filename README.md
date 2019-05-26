@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-## This App is Undder Production
-
 =======
 ## This App is under production
 >>>>>>> origin/master
