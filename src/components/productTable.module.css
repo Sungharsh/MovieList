@@ -1,0 +1,28 @@
+.templet {
+  display: grid;
+  align-content: center;
+  /*display: flex;
+  display: coloum;
+  flex-direction: row;
+  justify-items: center;
+  width: 500px;
+  line-height: 20px;*/
+}
+.heading {
+  font-size: 16px;
+  background: #666;
+  color: white;
+  padding: 6px;
+  letter-spacing: 0.5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.columHeading {
+  padding: 5px;
+  color: #666;
+  letter-spacing: 0.5em;
+  text-align: left;
+}
+.cart {
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+.totalprice {
+  display: flex;
+  width: 100%;
+  background: #666;
+  color: #fff;
+  text-transform: uppercase;
+  /* margin: 10px;
+  line-height: 20px;
+  font-size: 16px;
+
+ 
+  
+  padding: 6px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  */
+}
+.totalprice > div {
+  padding: 10px;
+  border: 1px solid #b8b8b8;
+  width: 50%;
+}
