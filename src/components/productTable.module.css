@@ -1,12 +1,6 @@
 .templet {
   display: grid;
   align-content: center;
-  /*display: flex;
-  display: coloum;
-  flex-direction: row;
-  justify-items: center;
-  width: 500px;
-  line-height: 20px;*/
 }
 .heading {
   font-size: 16px;
@@ -25,4 +19,13 @@
 }
 .cart {
   width: 100%;
+  min-height: 60vh;
+}
+.button {
+  background-color: #666666;
+  border-radius: 5px;
+  border: 1px solid #5c5c5c;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 11px 23px;
 }

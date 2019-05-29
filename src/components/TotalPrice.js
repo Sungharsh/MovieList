@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classes from "./totalPrice.module.css";
-//import ProductCategoryRow from "./ProductCategoryRow";
 
 class TotalPrice extends Component {
   render() {
