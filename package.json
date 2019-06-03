@@ -1,13 +1,11 @@
 {
-  "name": "stockwave",
+  "name": "sales-tax",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
-    "react-css-grid": "^2.0.0-0",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.0",
-    "react-window": "^1.8.1"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

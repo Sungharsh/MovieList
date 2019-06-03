@@ -1,16 +1,12 @@
 import React, { Component } from "react";
+import classes from "./catalog.module.css";
 import ProductCategoryRow from "../components/ProductCategoryRow";
 import ProductRow from "../components/ProductRow";
-import classes from "./catalog.module.css";
 import AuthContext from "../context/auth-context";
 
-class ProductTable extends Component {
+class ShoppingCart extends Component {
   static contextType = AuthContext;
 
-  AdditemsHandler = props => {
-    const cart = this.context.AddItemsToCart;
-    this.setState({ AddItemsToCart: !cart });
-  };
   render() {
     const rows = [];
     let lastCategory = null;
@@ -24,19 +20,22 @@ class ProductTable extends Component {
         );
       }
       rows.push(
-        <ProductRow
-          name={this.context.PRODUCTS[0].name}
-          product={product}
-          key={product.name}
-        />
+        this.context.PRODUCTS.forEach(product => {
+          if (product.isChecked !== false)
+            rows.push(
+              <ProductRow
+                name={this.context.PRODUCTS[0].name}
+                product={product}
+                key={product.name}
+              />
+            );
+        })
       );
       lastCategory = product.category;
     });
-
     return (
       <div className={classes.templet}>
-        <h1 className={classes.heading}>Select Items</h1>
-
+        <h1 className={classes.heading}>Shopping Cart</h1>
         <table className={classes.cart}>
           <thead>
             <tr className={classes.columHeading}>
@@ -44,23 +43,10 @@ class ProductTable extends Component {
               <th>Price</th>
             </tr>
           </thead>
-          <tbody>
-            {rows}
-            <tr>
-              <th colSpan="2">
-                <button
-                  className={classes.button}
-                  type="submit"
-                  onClick={this.AdditemsHandler}
-                >
-                  ADD
-                </button>
-              </th>
-            </tr>
-          </tbody>
+          <tbody>{rows}</tbody>
         </table>
       </div>
     );
   }
 }
-export default ProductTable;
+export default ShoppingCart;

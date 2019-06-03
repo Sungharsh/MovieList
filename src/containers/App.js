@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import ProductTable from "../components/ProductTable";
 import classes from "./App.module.css";
-import TotalPrice from "../components/TotalPrice";
-import Catalog from "../components/Catalog";
+import Invoice from "../components/Invoice";
 
 //import { template } from "@babel/core";
 //import classes from "*.module.scss";
@@ -10,14 +8,8 @@ import Catalog from "../components/Catalog";
 class App extends Component {
   render() {
     return (
-      <div className={classes.invoice}>
-        <div>
-          <Catalog />
-        </div>
-        <div>
-          <ProductTable />
-          <TotalPrice />
-        </div>
+      <div className={classes.App}>
+        <Invoice />
       </div>
     );
   }

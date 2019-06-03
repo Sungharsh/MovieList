@@ -1,34 +1,39 @@
 import React, { Component } from "react";
-//import classes from "./invoice.css";
 import classes from "./productRow.module.css";
+import AuthContext from "../context/auth-context";
 
 class ProductRow extends Component {
-  render(props) {
+  static contextType = AuthContext;
+  CheckboxChange = event => {
+    if (event.target.checked) {
+      this.setState({ isChecked: !this.context.isChecked });
+    }
+    this.context.PRODUCTS.forEach(product => {
+      if (event.target.id === product.id) {
+        product.isChecked = true;
+      }
+      console.log(this.isChecked);
+    });
+  };
+
+  render() {
     const product = this.props.product;
-    const name = product.stocked ? (
-      product.name
-    ) : (
-      <span style={{ color: "red" }}>{product.name}</span>
-    );
-    //const checkbox = this.props.checkbox;
     return (
       <tr>
-        <td>{name}</td>
-        <td>
+        <td className={classes.item}>{product.name}</td>
+        <td className={classes.price}>
           <span>£ </span>
           {product.price}
         </td>
+        <td />
         <td>
-          <lable>
-            <span className={classes.cheBox}>
-              <input
-                onChange={this.props.check}
-                type="checkbox"
-                name="books"
-                value="Bike"
-              />
-            </span>
-          </lable>
+          <span className={classes.cheBox}>
+            <input
+              type="checkbox"
+              id={product.id}
+              onChange={this.CheckboxChange}
+            />
+          </span>
         </td>
       </tr>
     );
