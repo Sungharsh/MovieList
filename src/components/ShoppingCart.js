@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import classes from "./catalog.module.css";
 import ProductCategoryRow from "../components/ProductCategoryRow";
-import ProductRow from "../components/ProductRow";
-import AuthContext from "../context/auth-context";
+import CartRow from "../components/CartRow";
 
 class ShoppingCart extends Component {
-  static contextType = AuthContext;
+  componentDidMount() {
+    //console.log(this.context.AddItemsToCart);
+  }
 
   render() {
+    const products = this.props.productArray;
     const rows = [];
     let lastCategory = null;
-    this.context.PRODUCTS.forEach(product => {
+    products.forEach(product => {
       if (product.category !== lastCategory) {
         rows.push(
           <ProductCategoryRow
@@ -19,20 +21,22 @@ class ShoppingCart extends Component {
           />
         );
       }
-      rows.push(
-        this.context.PRODUCTS.forEach(product => {
-          if (product.isChecked !== false)
-            rows.push(
-              <ProductRow
-                name={this.context.PRODUCTS[0].name}
-                product={product}
-                key={product.name}
-              />
-            );
-        })
-      );
       lastCategory = product.category;
+      let checked = null;
+      if (product.isChecked !== checked) {
+        rows.push(
+          <CartRow
+            name={this.props.productArray[0].name}
+            product={product}
+            key={product.id}
+            products={this.props.productArray}
+          />
+        );
+      }
+      checked = product.isChecked;
+      checked = product.ch;
     });
+
     return (
       <div className={classes.templet}>
         <h1 className={classes.heading}>Shopping Cart</h1>

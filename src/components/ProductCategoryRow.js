@@ -6,7 +6,7 @@ class ProductCategoryRow extends Component {
     const category = this.props.category;
     return (
       <tr className={classes.itemType}>
-        <th colSpan="2">{category}</th>
+        <th colSpan="4">{category}</th>
       </tr>
     );
   }

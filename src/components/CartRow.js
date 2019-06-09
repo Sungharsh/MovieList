@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import classes from "./productRow.module.css";
-import Checkbox from "./Checkbox";
+import classes from "./cartRow.module.css";
 
-class ProductRow extends Component {
+class CartRow extends Component {
   // CheckboxChange = event => {
   //   if (event.target.checked) {
   //     this.context.isChecked = true;
@@ -12,6 +11,7 @@ class ProductRow extends Component {
 
   render() {
     const product = this.props.product;
+    //const product = this.props.productArray;
     return (
       <tr>
         <td className={classes.item}>{product.name}</td>
@@ -20,20 +20,8 @@ class ProductRow extends Component {
           {product.price}
         </td>
         <td />
-        <td>
-          <Checkbox />
-          {/* <span className={classes.cheBox}>
-            <input
-              type="checkbox"
-              id={product.id}
-              //value={lable}
-              onChange={this.CheckboxChange}
-              //name="books"
-            />
-          </span> */}
-        </td>
       </tr>
     );
   }
 }
-export default ProductRow;
+export default CartRow;

@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import ProductCategoryRow from "../components/ProductCategoryRow";
-import ProductRow from "../components/ProductRow";
+import ProductCategoryRow from "./ProductCategoryRow";
+import ProductRow from "./ProductRow";
 import classes from "./catalog.module.css";
-import AuthContext from "../context/auth-context";
 
-class ProductTable extends Component {
-  static contextType = AuthContext;
-
+class CatalogTable extends Component {
   AdditemsHandler = props => {
-    const cart = this.context.AddItemsToCart;
-    this.setState({ AddItemsToCart: !cart });
+    this.setState({ checked: true });
   };
+
   render() {
+    const products = this.props.productArray;
     const rows = [];
     let lastCategory = null;
-    this.context.PRODUCTS.forEach(product => {
+    products.forEach(product => {
       if (product.category !== lastCategory) {
         rows.push(
           <ProductCategoryRow
@@ -25,9 +23,10 @@ class ProductTable extends Component {
       }
       rows.push(
         <ProductRow
-          name={this.context.PRODUCTS[0].name}
+          name={this.props.productArray[0].name}
           product={product}
           key={product.name}
+          products={this.props.productArray}
         />
       );
       lastCategory = product.category;
@@ -36,18 +35,17 @@ class ProductTable extends Component {
     return (
       <div className={classes.templet}>
         <h1 className={classes.heading}>Select Items</h1>
-
         <table className={classes.cart}>
           <thead>
             <tr className={classes.columHeading}>
-              <th>Item</th>
+              <th>Items</th>
               <th>Price</th>
             </tr>
           </thead>
           <tbody>
             {rows}
             <tr>
-              <th colSpan="2">
+              <td colSpan="4">
                 <button
                   className={classes.button}
                   type="submit"
@@ -55,7 +53,7 @@ class ProductTable extends Component {
                 >
                   ADD
                 </button>
-              </th>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -63,4 +61,4 @@ class ProductTable extends Component {
     );
   }
 }
-export default ProductTable;
+export default CatalogTable;
