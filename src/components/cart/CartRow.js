@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import classes from "./cartRow.module.css";
+import IfNoItemsAdded from "./IfNoItemsAdded";
 
 class CartRow extends Component {
-  // CheckboxChange = event => {
-  //   if (event.target.checked) {
-  //     this.context.isChecked = true;
-  //     console.log(this.context.isChecked);
-  //   }
-  // };
-
   render() {
     const product = this.props.product;
-    //const product = this.props.productArray;
-    return (
+    let myCart = (
       <tr>
         <td className={classes.item}>{product.name}</td>
         <td className={classes.price}>
@@ -22,6 +15,10 @@ class CartRow extends Component {
         <td />
       </tr>
     );
+    if (this.props.checked === false) {
+      myCart = <IfNoItemsAdded />;
+    }
+    return { myCart };
   }
 }
 export default CartRow;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import classes from "./App.module.css";
-import Invoice from "../components/Invoice";
+import Invoice from "./Invoice";
 
 //import { template } from "@babel/core";
 //import classes from "*.module.scss";

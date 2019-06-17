@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import classes from "./catalog.module.css";
-import ProductCategoryRow from "../components/ProductCategoryRow";
-import CartRow from "../components/CartRow";
+import classes from "../catalog/catalog.module.css";
+import ProductCategoryRow from "../catalog/ProductCategoryRow";
+import CartRow from "./CartRow";
 
-class ShoppingCart extends Component {
+class CartTable extends Component {
   componentDidMount() {
     //console.log(this.context.AddItemsToCart);
   }
@@ -12,8 +12,9 @@ class ShoppingCart extends Component {
     const products = this.props.productArray;
     const rows = [];
     let lastCategory = null;
+    let checked = true;
     products.forEach(product => {
-      if (product.category !== lastCategory) {
+      if (product.category !== lastCategory && product.isChecked === checked) {
         rows.push(
           <ProductCategoryRow
             category={product.category}
@@ -22,8 +23,8 @@ class ShoppingCart extends Component {
         );
       }
       lastCategory = product.category;
-      let checked = null;
-      if (product.isChecked !== checked) {
+
+      if (product.isChecked === checked) {
         rows.push(
           <CartRow
             name={this.props.productArray[0].name}
@@ -33,8 +34,8 @@ class ShoppingCart extends Component {
           />
         );
       }
-      checked = product.isChecked;
-      checked = product.ch;
+      //checked = product.isChecked;
+      // checked = product.ch;
     });
 
     return (
@@ -53,4 +54,4 @@ class ShoppingCart extends Component {
     );
   }
 }
-export default ShoppingCart;
+export default CartTable;

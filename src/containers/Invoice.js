@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-//import classes from "./App.module.css";
-import TotalPrice from "../components/TotalPrice";
-import CatalogTable from "./CatalogTable";
-import ShoppingCart from "../components/ShoppingCart";
+import TotalPrice from "../components/totalPrice/TotalPrice";
+import CatalogTable from "../components/catalog/CatalogTable";
+import CartTable from "../components/cart/CartTable";
 import classes from "./invoice.module.css";
 import authContext from "../context/auth-context";
 
@@ -69,10 +68,14 @@ class invoice extends Component {
     checked: false,
     authenticated: false,
     itemsChecked: false,
-    someOther: "someother value"
+    someOther: "someother value",
+    cartItems: []
   };
-  AdditemsHandler = () => {
-    this.setState({ Checked: true });
+  handleCheckboxChange = event => {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : false;
+    this.setState({ [this.state.PRODUCTS.isChecked]: value });
+    console.log(value);
   };
   render() {
     return (
@@ -85,10 +88,13 @@ class invoice extends Component {
       >
         <div className={classes.invoice}>
           <div>
-            <CatalogTable productArray={this.state.PRODUCTS} />
+            <CatalogTable
+              productArray={this.state.PRODUCTS}
+              handleCheckboxChange={this.handleCheckboxChange}
+            />
           </div>
           <div>
-            <ShoppingCart productArray={this.state.PRODUCTS} />
+            <CartTable productArray={this.state.PRODUCTS} />
             <TotalPrice />
           </div>
         </div>
